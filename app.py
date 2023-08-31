@@ -7,9 +7,12 @@ app = Flask(__name__)
 
 assets = Environment(app)
 css = Bundle("src/main.css", output="dist/main.css")
+js = Bundle("src/*.js", output="dist/main.js")  # new
 
 assets.register("css", css)
+assets.register("js", js)  # new
 css.build()
+js.build()  # new
 
 
 @app.route("/")
