@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% assets 'css' %}
+      <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {% endassets %}
+
+    <!-- new -->
+    {% assets 'js' %}
+      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+      <script src="https://unpkg.com/htmx.org/dist/ext/sse.js"></script>
+
+      <title>Stream fuckery</title>
+      <style>
+        .fade-me-out.htmx-swapping {
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+      </style>
+  </head>
+  <body class="bg-blue-100">
+    <div class="text-center">
+          <h1 class="font-serif text-4xl">Are u ready</h1>
+
+     <button
+       class="rounded-full
+              mx-auto
+              bg-gray-600
+              p-6
+              text-white
+              htmx-swapping:opacity-0
+              transition-opacity
+              duration-1000
+              ease-out"
+       hx-swap="afterend"
+       hx-get="/start-connection">
+      Klick
+    </button>
+    </div>
+    <div class="items"></div>
+  </body>
+</html>

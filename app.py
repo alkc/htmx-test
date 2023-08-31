@@ -2,7 +2,7 @@
 
 import time
 
-from flask import Flask, render_template, request
+from flask import Flask, Response, render_template, request
 from flask_assets import Bundle, Environment
 
 from todo import todos
@@ -64,6 +64,30 @@ def clicked_button():
 @app.route("/indicator")
 def indicator_view():
     return render_template("indicator.html")
+
+
+@app.route("/fuckery")
+def fuckery():
+    return render_template("fuckery.html")
+
+
+@app.route("/start-connection")
+def start_connection():
+    return """<div hx-ext="sse" sse-connect="/stream" sse-swap="message">
+        Contents of this box will be updated in real time
+        with every SSE message received from the chatroom.
+    </div>"""
+
+
+@app.route("/stream")
+def stream_test():
+    def stream():
+        for idx in range(25):
+            msg = f"data: <p>This is {idx}.</p>\n\n"
+            yield msg
+            time.sleep(1)
+
+    return Response(stream(), mimetype="text/event-stream")
 
 
 if __name__ == "__main__":
