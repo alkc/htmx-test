@@ -21,5 +21,7 @@ wget https://unpkg.com/htmx.org@1.7.0/dist/htmx.js
 
 mv htmx.js ./static/src/htmx.js
 
+wget -O ./static/hearts.svg http://samherbert.net/svg-loaders/svg-loaders/hearts.svg
+
 tailwindcss -i ./static/src/main.css -o ./static/dist/main.css --minify
 ```
