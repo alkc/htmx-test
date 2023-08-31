@@ -161,3 +161,4 @@ cython_debug/
 .dir-locals.el
 *~undo-tree~
 static/src/htmx.js
+static/hearts.svg
