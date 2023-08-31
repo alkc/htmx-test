@@ -1,0 +1,31 @@
+<!-- templates/indicator.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="w-small w-2/3 mx-auto py-10 bg-pink-100 font-serif">
+  <div class="flex flex-col items-center justify-center shadow-lg mx-auto">
+    <button
+      class = "bg-blue-500 hover:bg-blue-600
+               text-white
+               font-bold
+               py-2 px-4
+               rounded
+               focus:outline-none
+               focus:shadow-outline"
+      hx-indicator=".htmx-indicator"
+      hx-get="/button_indicator_test"
+      hx-target=".button_log"
+      hx-swap="afterend"
+      >
+      Hearts!
+    </button>
+  </div>
+
+  <div class="button_log" class="flex flex-col items-center justify-center mx-auto text-center">
+    <p class="mx-auto w-32">
+      <img class="htmx-indicator"  id="spinner"  src="static/hearts.svg"/>
+    </p>
+  </div>
+</div>
+{% endblock content %}
